@@ -59,19 +59,19 @@ namespace Summit.Controllers
         public ActionResult Index(string Region, string Program)
         {
             ViewBag.Title = "Home Page";
-            ViewBag.Region = Region = String.IsNullOrEmpty(Region) ? "Austin" : Region;
+            ViewBag.Region = Region = String.IsNullOrEmpty(Region) ? "US" : Region;
 
             ViewBag.Program = Program = String.IsNullOrEmpty(Program) ? "ITDP" : Program;
 
-            ViewBag.Regions = new string[] { "India", "Austin", "Malaysia" };
-            if(Region == "Austin")
-                ViewBag.Programs = new string[] { "ITDP", "ITLP Cohort 1", "ITLP Cohort 2" };
+            ViewBag.Regions = new string[] { "India", "US", "Malaysia" };
+            if(Region == "US")
+                ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "leader (  itlp fy19)" };
             else
                 ViewBag.Programs = new string[] { "ITDP", "ITLP"};
             if (Region == "India")
             {
                 ViewBag.Date = "June 20-22, 2018";
-                if (Program == "ITLP Cohort 1" || Program == "ITLP Cohort 2")
+                if (Program == "ITLP" || Program == "Leader")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
@@ -80,15 +80,15 @@ namespace Summit.Controllers
             if (Region == "Malaysia")
             {
                 ViewBag.Date = "June 26-27, 2018";
-                if (Program == "ITLP Cohort 1" || Program == "ITLP Cohort 2")
+                if (Program == "ITLP (FY16-FY18)" || Program == "leader (  itlp fy19)")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
                 }
             }
-            if (Region == "Austin")
+            if (Region == "US")
                 ViewBag.Date = "May 08-10, 2018";
-            ViewBag.LatLngs = new KeyValuePair<string, string>[] {  new KeyValuePair<string, string>("Austin", "30.266620,-97.740375"),
+            ViewBag.LatLngs = new KeyValuePair<string, string>[] {  new KeyValuePair<string, string>("US", "30.266620,-97.740375"),
                                                                     new KeyValuePair<string, string>("India", "28.580132,77.189365"),
                                                                     new KeyValuePair<string, string>("Malaysia", "3.153875,101.714669")
                                                                   };
@@ -102,7 +102,7 @@ namespace Summit.Controllers
         private List<string> GetSessions(string region, string program)
         {
             List<string> sessions = new List<string>();
-            if (region.ToLower() == "austin")
+            if (region.ToLower() == "us")
             {
                 sessions.Add("Ajaz and speaker from DT World");
                 sessions.Add("Digital Transformation panel");
@@ -119,12 +119,12 @@ namespace Summit.Controllers
                     sessions.Add("Coaching by ITLPs");
                     sessions.Add("Judging by Kavitha and Ujjwal");
                 }
-                if(program.ToLower() == "itlp cohort 1")
+                if(program.ToLower() == "itlp (fy16-fy18)")
                 {
                     sessions.Add("Coaching by Goal Success");
                     sessions.Add("Biz simulation by Abilitie");
                 }
-                else if(program.ToLower() == "itlp cohort 2")
+                else if(program.ToLower() == "leader (  itlp fy19)")
                 {
                     sessions.Add("Influence/Presence by DD Sales");
                     sessions.Add("Advancing your career by Christi Miller");
@@ -135,18 +135,18 @@ namespace Summit.Controllers
 
         public List<EventDay> GetAgenda(string Region, string Program)
         {
-
+            string pro = Program.ToLower();
             List<EventDay> Agenda = new List<EventDay>();
             Groups group;
             EventDay day_one;
             switch (Region.ToLower())
             {
-                case "austin":
+                case "us":
                     //First day
                     switch (Program.ToLower())
                     {
-                        case "itlp cohort 1":
-                        case "itlp cohort 2":
+                        case "itlp (fy16-fy18)":
+                        case "leader (  itlp fy19)":
                             day_one = new EventDay();
                             day_one.location = "Pumeria";
                             day_one.Groups = new List<Groups>();
@@ -250,7 +250,7 @@ namespace Summit.Controllers
                             day_three.Groups.Add(group);
 
                             break;
-                        case "itlp cohort 1":
+                        case "itlp (fy16-fy18)":
                             day_three.location = "Rumeria";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Coaching", "Goal Succcess"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
@@ -271,7 +271,7 @@ namespace Summit.Controllers
                             day_three.Groups.Add(group);
 
                             break;
-                        case "itlp cohort 2":
+                        case "leader (  itlp fy19)":
                             day_three.location = "Primrose D";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Influence/Presence", "DD Sales"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
@@ -327,7 +327,7 @@ namespace Summit.Controllers
                             day_four.Groups.Add(group);
 
                             break;
-                        case "itlp cohort 1":
+                        case "itlp (fy16-fy18)":
                             day_four.location = "Rumeria";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Biz Simulation", "Abilitie"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
@@ -348,7 +348,7 @@ namespace Summit.Controllers
                             day_four.Groups.Add(group);
 
                             break;
-                        case "itlp cohort 2":
+                        case "leader (  itlp fy19)":
                             day_four.location = "Primrose D";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Advancing your career", "Christi Miller"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
@@ -487,8 +487,11 @@ namespace Summit.Controllers
             List<EventSession> TEvents = new List<EventSession>();
             switch (region.ToLower())
             {
-                case "austin": TEvents.Add(new EventSession("5/5/18 - 5/6/18", "Pecan Street Spring Arts Festival", "A free, family event, the Pecan Street Festival is the oldest and largest art festival in Central Texas. Musicians, food vendors, artists and crafts people turn Sixth Street - historically called Pecan Street into a lively street fair where there is something for people of all ages.", "www.pecanstreetfestival.org", "East Sixth Street"));
-                    TEvents.Add(new EventSession("5/6/18 ( 7:30 am - 10:00 am)", "5th Annual Silicon Labs Sunshine Run", "The fifth annual Silicon Labs Sunshine Run will take place on Sunday, May 6 in the heart of downtown Austin on the certified course beginning at Vic Mathias Shores at Town Lake on 900 West Riverside Drive. Funds raised from the race will benefit Austin Sunshine Camps making a positive difference in the lives of Austin’s low-income youth.", "https://thingstodo.austin360.com/venue/auditorium-shores", "Auditorium Shores, 900 W Riverside Dr, Austin, TX 78704"));
+                case "us":
+                    TEvents.Add(new EventSession("Hotels", "", "We will be hosting this year’s Austin summit at the Westin/Domain, please use this link to book your Hotel room", "https://www.starwoodmeeting.com/Book/DellSummit", "You should check into the hotel using your own corporate card, and then submit for reimbursement of these costs when you file your expense report."));
+                    TEvents.Add(new EventSession("Meals", "", "Breakfast and Lunch will be provided to you on Tue May 8 thru Thu May 10, plus additional meals during social events after summit hours on Tue and Fri.\n Use the Registration Link above to tell us about any dietary restrictions.", "", "If you have any additional meal expenses outside of those provided, you can submit for reimbursement when you file your expense report (Daily limit of $75 per corporate policy)"));
+                    TEvents.Add(new EventSession("Ground Transportation", "", "Upon arrival at the Austin airport, you will have many options for ground transportation to the hotel - Upper level provides options for Rental Cars; Lower level provides options for Taxi, Limo, Shuttle, and a number of transportation companies, such as: Lyft and Uber. The Westin hotel is also providing a discount for guests using Super Shuttle (use below link). Drive time will be approximately 45 minutes from the airport to the hotel, and some routes may have tolls.", "http://groups.supershuttle.com/westinaustinatthedomainguesttransportation.html", "You can submit for reimbursement of these costs when you file your expense report."));
+                    TEvents.Add(new EventSession("Weather", "", "", "https://weather.com/weather/tenday/l/Austin+TX+USTX0057:1:US", ""));
                     break;
                 case "india":
                     TEvents.Add(new EventSession("5/5/18 - 5/6/18", "Pecan Street Spring Arts Festival", "A free, family event, the Pecan Street Festival is the oldest and largest art festival in Central Texas. Musicians, food vendors, artists and crafts people turn Sixth Street - historically called Pecan Street into a lively street fair where there is something for people of all ages.", "www.pecanstreetfestival.org", "East Sixth Street"));
@@ -504,27 +507,32 @@ namespace Summit.Controllers
             }
             return TEvents;
         }
-        public List<string> GetTravelerChecklist(string region,string Program)
+        public List<EventSession> GetTravelerChecklist(string region,string Program)
         {
             List<string> Checklist = new List<string>();
+            List<EventSession> TEvents = new List<EventSession>();
             switch (region.ToLower())
             {
-                case "austin":
-                    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
+                case "us":
+                    //TEvents.Add(new EventSession("What to Wear", "All sessions during the summit will be business casual (unless noted on your daily agenda), but jeans are perfectly fine at any time (after all, this is Austin, Texas!) as long as they are not ripped or frayed. Please no shorts, tank tops, or flip flops. Please refer to the article <a src='https://www.thebalance.com/business-casual-dress-code-1919379'>here</a> for further guidance."));
+                    //TEvents.Add(new EventSession("What to Bring", "All sessions during the summit will be business casual (unless noted on your daily agenda), but jeans are perfectly fine at any time (after all, this is Austin, Texas!) as long as they are not ripped or frayed. Please no shorts, tank tops, or flip flops. Please refer to the article <a src='https://www.thebalance.com/business-casual-dress-code-1919379'>here</a> for further guidance."));
+                    //TEvents.Add(new EventSession("Things to do", "All sessions during the summit will be business casual (unless noted on your daily agenda), but jeans are perfectly fine at any time (after all, this is Austin, Texas!) as long as they are not ripped or frayed. Please no shorts, tank tops, or flip flops. Please refer to the article <a src='https://www.thebalance.com/business-casual-dress-code-1919379'>here</a> for further guidance."));
+                    //TEvents.Add(new EventSession("What to Wear", "All sessions during the summit will be business casual (unless noted on your daily agenda), but jeans are perfectly fine at any time (after all, this is Austin, Texas!) as long as they are not ripped or frayed. Please no shorts, tank tops, or flip flops. Please refer to the article <a src='https://www.thebalance.com/business-casual-dress-code-1919379'>here</a> for further guidance."));
+                    //TEvents.Add(new EventSession("What to Wear", "All sessions during the summit will be business casual (unless noted on your daily agenda), but jeans are perfectly fine at any time (after all, this is Austin, Texas!) as long as they are not ripped or frayed. Please no shorts, tank tops, or flip flops. Please refer to the article <a src='https://www.thebalance.com/business-casual-dress-code-1919379'>here</a> for further guidance."));
                     break;
-                case "india":
-                    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
+                //case "india":
+                //    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
 
-                    break;
-                case "malaysia":
-                    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
+                //    break;
+                //case "malaysia":
+                //    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
 
-                    break;
-                default:
-                    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
-                    break;
+                //    break;
+                //default:
+                //    Checklist.Add(" Texas State Capital "); Checklist.Add(" Umlauf Sculpture Garden "); Checklist.Add(" Zilker Park "); Checklist.Add(" Lady Bird Lake "); Checklist.Add(" Texas State History Museum "); Checklist.Add(" 360 Bridge "); Checklist.Add(" Mount Bonnell "); Checklist.Add(" Blanton Museum of Art "); Checklist.Add(" University of Texas "); Checklist.Add(" Barton Creek "); Checklist.Add(" Zilker Botanical Garden "); Checklist.Add(" HOPE Outdoor Gallery");
+                //    break;
             }
-            return Checklist;
+            return TEvents;
         }
 
         public JsonResult GetLatitudeLongitude(string Region)
@@ -532,7 +540,7 @@ namespace Summit.Controllers
             LatLng LL = null;
             switch (Region.ToLower())
             {
-                case "austin":
+                case "US":
                     LL = new LatLng("30.266620", "-97.740375");
                     break;
                 case "india":

@@ -3,40 +3,40 @@
     var url = window.location.pathname;
     url = url.split('/');
     var mainurl = window.location.host;
-    if (mainurl != "localhost")
+    if (mainurl !== "localhost")
         mainurl = mainurl + '/' + url[1];
     var fileextension = ".jpg";
-    if (region == "India") {
-        if (program.toLowerCase() == "itdp") {
+    if (region === "India") {
+        if (program.toLowerCase() === "itdp") {
             dir1 = "/img/grads/india/itdp/group1";
             dir2 = "/img/grads/india/itdp/group2";
             dir3 = "/img/grads/india/itdp/group3";
         }
-        else if (program.toLowerCase() == "itlp" ) {
+        else if (program.toLowerCase() === "itlp" ) {
             dir1 = "/img/grads/india/itlp/group1";
             dir2 = "/img/grads/india/itlp/group2";
             dir3 = "/img/grads/india/itlp/group3";
         }
     }
-    else if (region == "Austin") {
-        if (program.toLowerCase() == "itdp") {
+    else if (region === "US") {
+        if (program.toLowerCase() === "itdp") {
             dir1 = "/img/grads/austin/itdp/group1";
             dir2 = "/img/grads/austin/itdp/group2";
             dir3 = "/img/grads/austin/itdp/group3";
         }
-        else if (program.toLowerCase() == "itlp cohort 1" || program.toLowerCase() == "itlp cohort 2") {
+        else if (program.toLowerCase() === "itlp (fy16-fy18)" || program.toLowerCase() === "leader (  itlp fy19)") {
             dir1 = "/img/grads/austin/itlp/group1";
             dir2 = "/img/grads/austin/itlp/group2";
             dir3 = "/img/grads/austin/itlp/group3";
         }
     }
     else {
-        if (program.toLowerCase() == "itdp") {
+        if (program.toLowerCase() === "itdp") {
             dir1 = "/img/grads/malaysia/itdp/group1";
             dir2 = "/img/grads/malaysia/itdp/group2";
             dir3 = "/img/grads/malaysia/itdp/group3";
         }
-        else if (program.toLowerCase() == "itlp") {
+        else if (program.toLowerCase() === "itlp") {
             dir1 = "/img/grads/malaysia/itlp/group1";
             dir2 = "/img/grads/malaysia/itlp/group2";
             dir3 = "/img/grads/malaysia/itlp/group3";
@@ -170,12 +170,12 @@
 
         }
     });
-    $('a').click(function (e) {
-        // Special stuff to do when this link is clicked...
+//    $('a').click(function (e) {
+//        // Special stuff to do when this link is clicked...
 
-        // Cancel the default action
-        e.preventDefault();
-    });
+//        // Cancel the default action
+//        e.preventDefault();
+//    });
     function getBaseUrl(address) {
 
         var path = "";
@@ -201,19 +201,9 @@
 
 
     $('.btn-file :file').on('fileselect', function (event, label) {
-
-        var input = $(this).parents('.input-group').find(':text'),
-            log = label;
-
-        if (input.length) {
-            input.val(log);
-        } else {
-            if (log) alert(log);
-        }
-
+        $("#imageText").val(label);
     });
-
-
+    
     $("#imgInp").change(function () {
         store(this);
     });
@@ -228,20 +218,22 @@ function readURL() {
     var data = new FormData();
     // Add the uploaded image content to the form data collection
     if (files.length > 0) {
-        data.append(files[0].name, files[0]);
+        data.append("UploadedImage", files[0]);
     }
 
     $.ajax({
         contentType: "application/json; charset=utf-8",
-        url: "http://annualsummit.aus.amer.dell.com:5555/" + 'api/ImageUpload',
+        url: "http://annualsummit.aus.amer.dell.com/SummitAPI/" + 'api/image',
         type: 'POST',
         contentType: false,
         processData: false,
         data: data,
         success: function (message) {
-            $("#errorMsg").html(message);
+            setTimeout(fade_out, 10000);
+            $("#errorMsg").html("Your image uploaded successfully");
         },
         fail: function (message) {
+            setTimeout(fade_out, 10000);
             $("#errorMsg").html("Error in updating: " + message);
         },
         error: function (jqXHR, exception) {
@@ -267,8 +259,12 @@ function readURL() {
         }
     });
 }
+function fade_out() {
+    $("#errorMsg").fadeOut().empty();
+}
 function register() {
     var name = $("#name").val();
+    var email = $('#email').val();
     var badgeid = $("#badgeid").val();
     var program = $("#program").val();
     var city = $("#city").val();
@@ -278,17 +274,21 @@ function register() {
     var gender = $("input[name=gender]:checked").val();
     var data = {
         username: name,
-        region: city,
         city: city,
+        email: email,
         country: country,
-        isITDP: program == "ITDP" ? true : false,
-        isITLP: program == "ITLP" ? true : false,
-        isLeader: program == "LEADER" ? true : false,
-        tShirtSize: tshirtSize
+        program: program,
+        //isITDP: program == "ITDP" ? true : false,
+        //isITLP: program == "ITLP" ? true : false,
+        //isLeader: program == "LEADER" ? true : false,
+        tShirtSize: tshirtSize,
+        gender: gender,
+        dietaryRestrictions: meal,
+        badgeID: badgeid
     }
     $.ajax({
         contentType: "application/json; charset=utf-8",
-        url: "http://annualsummit.aus.amer.dell.com:5555/" + 'api/Users',
+        url: "http://annualsummit.aus.amer.dell.com/SummitAPI/" + 'api/users',
         type: 'POST',
         data: JSON.stringify(data),
         dataType: 'json/text',
@@ -324,15 +324,16 @@ function register() {
 function submitFeedback() {
     var sessionName = $("#sessionName").val();
     var feedback = $("#feedback").val();
-    alert(region);
-    var data = {
+    var rating = $("input[name=star]:checked").val();
+    lvar data = {
         session: sessionName,
-        feedbackk: feedback,
-        country: region
+        rating: rating,
+        feedback: feedback,
+        region: region
     }
     $.ajax({
         contentType: "application/json; charset=utf-8",
-        url: "http://annualsummit.aus.amer.dell.com:5555/" + 'api/Feedback',
+        url: "http://annualsummit.aus.amer.dell.com/SummitAPI/" + 'api/feedback',
         type: 'POST',
         data: JSON.stringify(data),
         dataType: 'json/text',
