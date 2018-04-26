@@ -24,7 +24,7 @@
             dir2 = "/img/grads/austin/itdp/group2";
             dir3 = "/img/grads/austin/itdp/group3";
         }
-        else if (program.toLowerCase() === "itlp (fy16-fy18)" || program.toLowerCase() === "leader (  itlp fy19)") {
+        else if (program.toLowerCase() === "itlp (fy16-fy18)" || program.toLowerCase() === "leader (+ itlp fy19)") {
             dir1 = "/img/grads/austin/itlp/group1";
             dir2 = "/img/grads/austin/itlp/group2";
             dir3 = "/img/grads/austin/itlp/group3";
@@ -325,7 +325,7 @@ function submitFeedback() {
     var sessionName = $("#sessionName").val();
     var feedback = $("#feedback").val();
     var rating = $("input[name=star]:checked").val();
-    lvar data = {
+    var data = {
         session: sessionName,
         rating: rating,
         feedback: feedback,
