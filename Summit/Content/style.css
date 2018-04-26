@@ -422,7 +422,7 @@ button:focus,
 .jumbotron .content a.program {
     
     color: white;
-    font-size: 21px;
+    font-size: 20px;
     font-weight:500;
     font-variant-caps:all-petite-caps;
     /*border: 5px solid white;
@@ -606,7 +606,7 @@ button:focus,
     }
 
         .section-agenda .session h3 span {
-            font-size: 9px;
+            font-size: 12px;
             display: block;
             line-height: 3;
             font-weight:300;

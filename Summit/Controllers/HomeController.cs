@@ -25,6 +25,7 @@ namespace Summit.Controllers
             public string Extra;
             public string Source;
             public string Location;
+            public string Attire;
             public EventSession(string Time, string Title)
             {
                 this.Time = Time;
@@ -47,6 +48,8 @@ namespace Summit.Controllers
         }
         public class EventDay
         {
+            public string date;
+            public string attire;
             public string location;
             public List<Groups> Groups;
         }
@@ -65,13 +68,13 @@ namespace Summit.Controllers
 
             ViewBag.Regions = new string[] { "India", "US", "Malaysia" };
             if(Region == "US")
-                ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "leader (  itlp fy19)" };
+                ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "LEADER (+ ITLP FY19)" };
             else
                 ViewBag.Programs = new string[] { "ITDP", "ITLP"};
             if (Region == "India")
             {
                 ViewBag.Date = "June 20-22, 2018";
-                if (Program == "ITLP" || Program == "Leader")
+                if (Program == "ITLP" || Program == "LEADER ( ITLP FY19)")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
@@ -80,7 +83,7 @@ namespace Summit.Controllers
             if (Region == "Malaysia")
             {
                 ViewBag.Date = "June 26-27, 2018";
-                if (Program == "ITLP (FY16-FY18)" || Program == "leader (  itlp fy19)")
+                if (Program == "ITLP (FY16-FY18)" || Program == "LEADER ( ITLP FY19)")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
@@ -104,31 +107,30 @@ namespace Summit.Controllers
             List<string> sessions = new List<string>();
             if (region.ToLower() == "us")
             {
-                sessions.Add("Ajaz and speaker from DT World");
-                sessions.Add("Digital Transformation panel");
-                sessions.Add("Pivotal");
-                if (program.ToLower() != "itdp")
+                sessions.Add("Opening Ceremony / Welcome");
+                sessions.Add("Dell Strategy update(Ajaz Munsiff)");
+                sessions.Add("Exec Panel – Digital Transformation");
+                sessions.Add("Pivotal Overview(Kathy Burgess)");
+                sessions.Add("Fireside Chat with Bask &Kellie");
+                sessions.Add("CSR(Dell Children’s Hospital)");
+                sessions.Add("Reception Dinner(Punchbowl Social)");
+                if (program.ToLower() == "itdp")
                 {
-                    sessions.Add("Sara Canaday or Hogan?");
-                    sessions.Add("Finance for Non Finance?");
-                    sessions.Add("Career Panel?");
+                    sessions.Add("Digital IT Simulation(Wronski)");
                 }
-                else if(program.ToLower() == "itdp")
+                else if(program.ToLower() == "itlp (fy16-fy18)")
                 {
-                    sessions.Add("Digital IT Future State Simulation");
-                    sessions.Add("Coaching by ITLPs");
-                    sessions.Add("Judging by Kavitha and Ujjwal");
-                }
-                if(program.ToLower() == "itlp (fy16-fy18)")
-                {
-                    sessions.Add("Coaching by Goal Success");
-                    sessions.Add("Biz simulation by Abilitie");
+                    sessions.Add("Influence Style Indicator(Goal Success)");
+                    sessions.Add("Coaching(Goal Success)");
+                    sessions.Add("Executive Challenge(Abilitie)");
                 }
                 else if(program.ToLower() == "leader (  itlp fy19)")
                 {
-                    sessions.Add("Influence/Presence by DD Sales");
-                    sessions.Add("Advancing your career by Christi Miller");
+                    sessions.Add("Influence / Executive Presence(Double Digit Sales)");
+                    sessions.Add("Advancing Your Career(Christie Miller)");
                 }
+                sessions.Add("Graduation");
+                sessions.Add("Farewell Lunch(Top Golf)");
             }
             return sessions;
         }
@@ -146,31 +148,35 @@ namespace Summit.Controllers
                     switch (Program.ToLower())
                     {
                         case "itlp (fy16-fy18)":
-                        case "leader (  itlp fy19)":
                             day_one = new EventDay();
-                            day_one.location = "Pumeria";
+                            day_one.date = "May 07";
+                            day_one.attire = "smart biz casual / exec presence";
+                            day_one.location = "Primrose AB";
                             day_one.Groups = new List<Groups>();
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("07:15 AM - 08:15AM", "Breakfast & Registration"));
-                            group.Sessions.Add(new EventSession("08:15 AM - 09:00AM", "Welcome"));
+                            group.Sessions.Add(new EventSession("07:30 AM - 08:30AM", "Registration & Breakfast"));
+                            group.Sessions.Add(new EventSession("08:30 AM - 09:00AM", "Welcome/Agenda"));
+                            group.Sessions.Add(new EventSession("09:00 AM - 10:00AM", "Keynote: The Parker Principles", "Mel Parker"));
+                            group.Sessions.Add(new EventSession("10:00 AM - 10:30AM", "Class Pictures / Break"));
                             day_one.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("09:00 AM - 12:00PM", "Sara Canaday or Hogan?"));
+                            group.Sessions.Add(new EventSession("10:30 AM - 12:00PM", "Dell Finance & IT", "Tom Polosky, Parag Ved"));
                             group.Sessions.Add(new EventSession("12:00 PM - 01:00PM", "Lunch"));
                             day_one.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("01:00 PM - 03:00PM", "Finance or Non Finance?"));
+                            group.Sessions.Add(new EventSession("01:00 PM - 03:00PM", "Next Level Leadership", "Sara Canaday"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 04:00PM", "Next Level Leadership- continued", "Sara Canaday"));
                             day_one.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("03:15 PM - 05:00PM", "Career Panel", "Pat, Cheryl"));
+                            group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "Exec Panel - Next Level Leadership"));
                             group.Sessions.Add(new EventSession("05:00 PM - 05:15PM", "Wrap Up"));
                             day_one.Groups.Add(group);
 
@@ -184,39 +190,43 @@ namespace Summit.Controllers
                     }
                     //Preparing day two with respect to programs
                     EventDay day_two = new EventDay();
-                    day_two.location = "Primrose ABC";
+                    day_two = new EventDay();
+                    day_two.date = "May 08";
+                    day_two.attire = "smart biz casual / exec presence";
+                    day_two.location = "Main Ballroom";
                     day_two.Groups = new List<Groups>();
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("07:15 AM - 08:15AM", "Breakfast & Registration"));
-                    group.Sessions.Add(new EventSession("08:15 AM - 09:15AM", "Welcome(Scott Pittman)/ Opening Ceremony"));
-                    group.Sessions.Add(new EventSession("09:15 AM - 09:45AM", "Agenda", "Jennifer/Kelli"));
-                    group.Sessions.Add(new EventSession("09:45 AM - 10:15AM", "Break"));
+                    group.Sessions.Add(new EventSession("07:30 AM - 08:30AM", "Registration & Breakfast"));
+                    group.Sessions.Add(new EventSession("08:30 AM - 09:30AM", "Opening Ceremony/ Welcome/ Keynote or Team Activity"));
+                    group.Sessions.Add(new EventSession("09:30 AM - 10:00AM", "Agenda"));
+                    group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
                     day_two.Groups.Add(group);
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("10:15 AM - 11:45AM", "Ajaz + Speaker from DT World"));
-                    group.Sessions.Add(new EventSession("11:45 AM - 12:45PM", "Lunch"));
+                    group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "FY19 Dell Strategy", "Ajaz Munsiff"));
+                    group.Sessions.Add(new EventSession("12:00 PM - 01:00PM", "Lunch"));
                     day_two.Groups.Add(group);
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("12:45 PM - 02:15PM", "Digital Transformation Panel", "Louise- Facilitator, Jaynene"));
-                    group.Sessions.Add(new EventSession("02:15 PM - 02:45PM", "Team Contest/ Activity"));
-                    group.Sessions.Add(new EventSession("02:45 PM - 03:15PM", "Break"));
+                    group.Sessions.Add(new EventSession("01:00 PM - 02:30PM", "Exec Panel - Digital Transformation"));
+                    group.Sessions.Add(new EventSession("02:30 PM - 03:00PM", "Team Activity"));
+                    group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
                     day_two.Groups.Add(group);
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("03:15 PM - 04:45PM", "Pivotal", "Kathy Burgees"));
-                    group.Sessions.Add(new EventSession("04:45 PM - 06:15PM", "Wrap Up /Raffle"));
+                    group.Sessions.Add(new EventSession("03:15 PM - 04:30PM", "Pivotal Overview", "Kathy Burgess, Emily Martinez"));
+                    group.Sessions.Add(new EventSession("04:30 PM - 05:00PM", "Fireside chat", "Bask Iyer & Kellie Crantz"));
+                    group.Sessions.Add(new EventSession("05:00 PM - 06:15PM", "Wrap Up or Raffle / ITDP class picture / (optional) CSR - onsite (Dell Children's Hospital)"));
+                    day_two.Groups.Add(group);
+
+                    group = new Groups();
+                    group.Sessions = new List<EventSession>();
                     group.Sessions.Add(new EventSession("06:15 PM - 06:30PM", "Transition"));
-                    day_two.Groups.Add(group);
-
-                    group = new Groups();
-                    group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("06:30 PM - 08:15PM", "Welcome Reception", "Punchbowl Social"));
+                    group.Sessions.Add(new EventSession("06:30 PM - 08:30PM", "Welcome Reception Dinner", "Punchbowl Social"));
                     day_two.Groups.Add(group);
                     Agenda.Add(day_two);
 
@@ -229,7 +239,9 @@ namespace Summit.Controllers
                     switch (Program.ToLower())
                     {
                         case "itdp":
-                            day_three.location = "Primrose ABC";
+                            day_three.location = "Main Ballroom";
+                            day_three.date = "May 09";
+                            day_three.attire = "jersey, jeans, comfortable shoes";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Digital IT Future State Simulation", "Wronski"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
                             group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Digital IT Future State Simulation", "Wronski"));
@@ -238,29 +250,29 @@ namespace Summit.Controllers
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Activity"));
                             day_three.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Digital IT Future State Simulation", "Wronski"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 04:15PM", "Coaching", "ITLPs"));
-                            group.Sessions.Add(new EventSession("04:15 PM - 05:00PM", "Digital IT Future State Simulation", "Wronski"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 05:15PM", "Digital IT Future State Simulation", "Wronski"));
                             day_three.Groups.Add(group);
-
                             break;
                         case "itlp (fy16-fy18)":
-                            day_three.location = "Rumeria";
-                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Coaching", "Goal Succcess"));
+                            day_three.location = "Primrose D";
+                            day_three.date = "May 09";
+                            day_three.attire = "jersey, jeans, comfortable shoes";
+                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Influence Style Indicator", "Goal Succcess"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
-                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Coaching", "Goal Succcess"));
+                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Influence Style Indicator", "Goal Succcess"));
                             day_three.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Contest/Activity","Main Ballroom"));
                             day_three.Groups.Add(group);
 
                             group = new Groups();
@@ -272,7 +284,9 @@ namespace Summit.Controllers
 
                             break;
                         case "leader (  itlp fy19)":
-                            day_three.location = "Primrose D";
+                            day_three.location = "Plumeria AB";
+                            day_three.date = "May 09";
+                            day_three.attire = "jersey, jeans, comfortable shoes";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Influence/Presence", "DD Sales"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
                             group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Influence/Presence", "DD Sales"));
@@ -280,21 +294,23 @@ namespace Summit.Controllers
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Contest/Activity","Main Ballroom"));
                             day_three.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Influence/Presence", "DD Sales"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 05:00PM", "Influence/Presence", "DD Sales"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 05:15PM", "Influence/Presence", "DD Sales"));
                             day_three.Groups.Add(group);
                             break;
                     }
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("05:00 PM - 05:15PM", "Wrap Up/Raffle"));
+                    group.Sessions.Add(new EventSession("05:15 PM - 05:45PM", "Wrap Up/Raffle/ Group Photo","Main Ballroom"));
+                    group.Sessions.Add(new EventSession("05:45 PM - 06:00PM", "transition"));
+                    group.Sessions.Add(new EventSession("06:00 PM - 07:00PM", "Yoga (onsite)","optional"));
                     day_three.Groups.Add(group);
                     Agenda.Add(day_three);
 
@@ -306,7 +322,9 @@ namespace Summit.Controllers
                     switch (Program.ToLower())
                     {
                         case "itdp":
-                            day_four.location = "Primrose ABC";
+                            day_four.location = "Main Ballroom";
+                            day_four.date = "May 10";
+                            day_four.attire = "smart biz casual / exec presence";
                             group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Digital IT Future State Simulation", "Wronski"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
                             group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Digital IT Future State Simulation", "Wronski"));
@@ -314,64 +332,69 @@ namespace Summit.Controllers
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Contest/Activity"));
                             day_four.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Digital IT Future State Simulation", "Wronski"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 04:15PM", "Judging", "Kavitha/Ujjwal"));
-                            group.Sessions.Add(new EventSession("04:15 PM - 05:00PM", "Awards", "Wronski"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 04:15PM", "Simulation Judging", "IT Leaders"));
+                            group.Sessions.Add(new EventSession("04:15 PM - 05:15PM", "Simulation Awards", "Wronski"));
                             day_four.Groups.Add(group);
 
                             break;
                         case "itlp (fy16-fy18)":
-                            day_four.location = "Rumeria";
-                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Biz Simulation", "Abilitie"));
+                            day_four.location = "Primrose D";
+                            day_four.date = "May 10";
+                            day_four.attire = "smart biz casual / exec presence";
+                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Exec Challenge", "Abilitie"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
-                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Biz Simulation", "Abilitie"));
+                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Exec Challenge", "Abilitie"));
                             day_four.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Contest/Activity","Main Ballroom"));
                             day_four.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Biz Simulation", "Abilitie"));
+                            group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Exec Challenge", "Abilitie"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 05:00PM", "Biz Simulation", "Abilitie"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 04:15PM", "Exec Challenge", "Abilitie"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 05:15PM", "Exec Readouts","IT Leaders"));
                             day_four.Groups.Add(group);
 
                             break;
                         case "leader (  itlp fy19)":
-                            day_four.location = "Primrose D";
-                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Advancing your career", "Christi Miller"));
+                            day_four.location = "Plumeria AB";
+                            day_four.date = "May 10";
+                            day_four.attire = "smart biz casual / exec presence";
+                            group.Sessions.Add(new EventSession("08:00 AM - 10:00AM", "Advancing your career", "Christi Miller, Angie Bickley"));
                             group.Sessions.Add(new EventSession("10:00 AM - 10:15AM", "Break"));
-                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Advancing your career", "Christi Miller"));
+                            group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "Advancing your career", "Christi Miller, Angie Bickley"));
                             day_four.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Contest/Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Contest/Activity","Main Ballroom"));
                             day_four.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Advancing your career", "Christi Miller"));
+                            group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Advancing your career", "Christi Miller, Angie Bickley"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 05:00PM", "Advancing your career", "Christi Miller"));
+                            group.Sessions.Add(new EventSession("03:15 PM - 05:00PM", "Advancing your career", "Christi Miller, Angie Bickley"));
                             day_four.Groups.Add(group);
                             break;
                     }
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("05:00 PM - 05:15PM", "Graduate Recognition \r\n Wrap Up/Raffle/Team Awards \r\n Group Picture/Cocktail Reception \r\n w Managers of DPs/LPs, Execs"));
+                    group.Sessions.Add(new EventSession("05:15 PM - 07:00PM", "Graduate Recognition \r\n Wrap Up/Raffle/Team Awards \r\n Group Picture/Cocktail Reception Dinner","Main Ballroom"));
                     day_four.Groups.Add(group);
                     Agenda.Add(day_four);
 
@@ -491,7 +514,8 @@ namespace Summit.Controllers
                     TEvents.Add(new EventSession("Hotels", "", "We will be hosting this year’s Austin summit at the Westin/Domain, please use this link to book your Hotel room", "https://www.starwoodmeeting.com/Book/DellSummit", "You should check into the hotel using your own corporate card, and then submit for reimbursement of these costs when you file your expense report."));
                     TEvents.Add(new EventSession("Meals", "", "Breakfast and Lunch will be provided to you on Tue May 8 thru Thu May 10, plus additional meals during social events after summit hours on Tue and Fri.\n Use the Registration Link above to tell us about any dietary restrictions.", "", "If you have any additional meal expenses outside of those provided, you can submit for reimbursement when you file your expense report (Daily limit of $75 per corporate policy)"));
                     TEvents.Add(new EventSession("Ground Transportation", "", "Upon arrival at the Austin airport, you will have many options for ground transportation to the hotel - Upper level provides options for Rental Cars; Lower level provides options for Taxi, Limo, Shuttle, and a number of transportation companies, such as: Lyft and Uber. The Westin hotel is also providing a discount for guests using Super Shuttle (use below link). Drive time will be approximately 45 minutes from the airport to the hotel, and some routes may have tolls.", "http://groups.supershuttle.com/westinaustinatthedomainguesttransportation.html", "You can submit for reimbursement of these costs when you file your expense report."));
-                    TEvents.Add(new EventSession("Weather", "", "", "https://weather.com/weather/tenday/l/Austin+TX+USTX0057:1:US", ""));
+                    //TEvents.Add(new EventSession("Weather", "", "", "https://weather.com/weather/tenday/l/Austin+TX+USTX0057:1:US", ""));
+                    TEvents.Add(new EventSession("Expenses","","","",""));
                     break;
                 case "india":
                     TEvents.Add(new EventSession("5/5/18 - 5/6/18", "Pecan Street Spring Arts Festival", "A free, family event, the Pecan Street Festival is the oldest and largest art festival in Central Texas. Musicians, food vendors, artists and crafts people turn Sixth Street - historically called Pecan Street into a lively street fair where there is something for people of all ages.", "www.pecanstreetfestival.org", "East Sixth Street"));
