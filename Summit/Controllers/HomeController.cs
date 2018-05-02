@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +9,8 @@ namespace Summit.Controllers
 {
     public class HomeController : Controller
     {
+
+        public string change_count = "1"; // Update this variable everytime you change 
         public class LatLng
         {
             public string VenueLatitude;
@@ -61,6 +64,7 @@ namespace Summit.Controllers
         
         public ActionResult Index(string Region, string Program)
         {
+            ViewBag.ChangeSet = change_count;
             ViewBag.Title = "Home Page";
             ViewBag.Region = Region = String.IsNullOrEmpty(Region) ? "US" : Region;
 
@@ -68,7 +72,7 @@ namespace Summit.Controllers
 
             ViewBag.Regions = new string[] { "India", "US", "Malaysia" };
             if(Region == "US")
-                ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "LEADER (+ ITLP FY19)" };
+                ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "LEADER and ITLP FY19" };
             else
                 ViewBag.Programs = new string[] { "ITDP", "ITLP"};
             if (Region == "India")
@@ -79,6 +83,11 @@ namespace Summit.Controllers
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
                 }
+                else
+                {
+                    ViewBag.Program = "ITDP";
+                    Program = "ITDP";
+                }
             }
             if (Region == "Malaysia")
             {
@@ -87,6 +96,11 @@ namespace Summit.Controllers
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
+                }
+                else
+                {
+                    ViewBag.Program = "ITDP";
+                    Program = "ITDP";
                 }
             }
             if (Region == "US")
@@ -124,7 +138,7 @@ namespace Summit.Controllers
                     sessions.Add("Coaching(Goal Success)");
                     sessions.Add("Executive Challenge(Abilitie)");
                 }
-                else if(program.ToLower() == "leader (  itlp fy19)")
+                else if(program.ToLower() == "LEADER and ITLP FY19")
                 {
                     sessions.Add("Influence / Executive Presence(Double Digit Sales)");
                     sessions.Add("Advancing Your Career(Christie Miller)");
@@ -205,21 +219,21 @@ namespace Summit.Controllers
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("10:15 AM - 12:00PM", "FY19 Dell Strategy", "Ajaz Munsiff"));
+                    group.Sessions.Add(new EventSession("10:15 AM - 11:30AM", "FY19 Dell Strategy", "Ajaz Munsiff"));
+                    group.Sessions.Add(new EventSession("11:30 AM - 12:00PM", "Team Activity"));
                     group.Sessions.Add(new EventSession("12:00 PM - 01:00PM", "Lunch"));
                     day_two.Groups.Add(group);
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
                     group.Sessions.Add(new EventSession("01:00 PM - 02:30PM", "Exec Panel - Digital Transformation"));
-                    group.Sessions.Add(new EventSession("02:30 PM - 03:00PM", "Team Activity"));
-                    group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
+                    group.Sessions.Add(new EventSession("02:30 PM - 02:45PM", "Break"));
                     day_two.Groups.Add(group);
 
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("03:15 PM - 04:30PM", "Pivotal Overview", "Kathy Burgess, Emily Martinez"));
-                    group.Sessions.Add(new EventSession("04:30 PM - 05:00PM", "Fireside chat", "Bask Iyer & Kellie Crantz"));
+                    group.Sessions.Add(new EventSession("02:45 PM - 04:15PM", "Pivotal Overview", "Kathy Burgess, Emily Martinez"));
+                    group.Sessions.Add(new EventSession("04:15 PM - 05:00PM", "Fireside chat", "Bask Iyer & Kellie Crantz"));
                     group.Sessions.Add(new EventSession("05:00 PM - 06:15PM", "Wrap Up or Raffle / ITDP class picture / (optional) CSR - onsite (Dell Children's Hospital)"));
                     day_two.Groups.Add(group);
 
@@ -249,8 +263,8 @@ namespace Summit.Controllers
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
-                            group.Sessions.Add(new EventSession("12:00 PM - 12:30PM", "Lunch"));
-                            group.Sessions.Add(new EventSession("12:30 PM - 01:15PM", "Team Activity"));
+                            group.Sessions.Add(new EventSession("12:00 PM - 12:45PM", "Lunch"));
+                            group.Sessions.Add(new EventSession("12:45 PM - 01:15PM", "Team Activity"));
                             day_three.Groups.Add(group);
 
                             group = new Groups();
@@ -283,7 +297,7 @@ namespace Summit.Controllers
                             day_three.Groups.Add(group);
 
                             break;
-                        case "leader (  itlp fy19)":
+                        case "leader and itlp fy19":
                             day_three.location = "Plumeria AB";
                             day_three.date = "May 09";
                             day_three.attire = "jersey, jeans, comfortable shoes";
@@ -365,11 +379,11 @@ namespace Summit.Controllers
                             group.Sessions.Add(new EventSession("01:15 PM - 03:00PM", "Exec Challenge", "Abilitie"));
                             group.Sessions.Add(new EventSession("03:00 PM - 03:15PM", "Break"));
                             group.Sessions.Add(new EventSession("03:15 PM - 04:15PM", "Exec Challenge", "Abilitie"));
-                            group.Sessions.Add(new EventSession("03:15 PM - 05:15PM", "Exec Readouts","IT Leaders"));
+                            group.Sessions.Add(new EventSession("04:15 PM - 05:15PM", "Exec Readouts","IT Leaders"));
                             day_four.Groups.Add(group);
 
                             break;
-                        case "leader (  itlp fy19)":
+                        case "leader and itlp fy19":
                             day_four.location = "Plumeria AB";
                             day_four.date = "May 10";
                             day_four.attire = "smart biz casual / exec presence";
@@ -583,4 +597,33 @@ namespace Summit.Controllers
     }
 
 
+}
+namespace System.Web.Mvc
+{
+    public static class UrlHelperExtensionMethods{
+        public static HtmlString Script(this UrlHelper helper, string contentPath)
+        {
+            return new HtmlString(string.Format("<script type='text/javascript' src='{0}'></script>", LatestContent(helper, contentPath)));
+        }
+        public static HtmlString CSS(this UrlHelper helper, string contentPath)
+        {
+            return new HtmlString(string.Format("<link href={0} rel=\"stylesheet\">", LatestContent(helper, contentPath)));
+        }
+        public static string LatestContent(this UrlHelper helper, string contentPath)
+        {
+            string file = HttpContext.Current.Server.MapPath(contentPath);
+            if (File.Exists(file))
+            {
+                var dateTime = File.GetLastWriteTime(file);
+                contentPath = string.Format("{0}?v={1}", contentPath, dateTime.Ticks);
+            }
+
+            return helper.Content(contentPath);
+        }
+        public static HtmlString Css(this UrlHelper helper, string contentPath)
+        {
+            return new HtmlString(string.Format("<link rel='stylesheet' type='text/css' href='{0}' media='screen' />", LatestContent(helper, contentPath)));
+        }
+
+    }
 }

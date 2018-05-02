@@ -138,9 +138,9 @@ var program = '@ViewBag.Program'
             </div>
 
 
-
-            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#registrationModal">REGISTER YOURSELF</button>
-
+            @if (ViewBag.Region != "US") { 
+             <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#registrationModal">REGISTER YOURSELF</button>
+            }
         </div>
     </div>
     <!-- .Jumbotron-->
@@ -248,515 +248,455 @@ var program = '@ViewBag.Program'
             @{
                 if (ViewBag.Region == "US")
                 {
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/bask-iyer_1000x500.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Dell and VMware’s CIO
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Bask Iyer</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Scott_Pittman_color.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Vice President, Commerce Services, CIO- US
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Scott Pittman</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Dell_Exec_Portraits_jenniferfelch00777.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Vice President, IT, OMF-Strat-GOV-US-1
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Jen Felch</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Garry Wiseman.png" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Vice President, IT, DCE_Dell.com_US
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Garry Wiseman</h2>
-                            </div>
-                        </div>
-                    </div>
+                    <table class="speaker_grid">
+                        <tr>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/bask-iyer_1000x500.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Dell and VMware’s CIO
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Bask Iyer</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Scott_Pittman_color.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Vice President, Commerce Services, CIO- US
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Scott Pittman</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Dell_Exec_Portraits_jenniferfelch00777.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Vice President, IT, OMF-Strat-GOV-US-1
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Jen Felch</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Garry Wiseman.png?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Vice President, IT, DCE_Dell.com_US
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Garry Wiseman</h2>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/KellieCrantz_12_highres.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Kellie is currently the HR Leader for Dell Digital &IT.
+                                                She works with the team driving Digital Transformation
+                                                for Dell.   Prior to this role, she was responsible for
+                                                Enterprise wide Talent Strategy, Planning and Programs.
+                                                Kellie has extensive HRBP experience specializing in areas
+                                                undergoing significant change.  Kellie worked as a consultant
+                                                with Accenture for 17 years prior to joining Dell.
+                                                Kellie and her husband Ed have two children, Patrick (15)
+                                                and Annaleigh (10) and they spend much of their family time
+                                                on the soccer field or on the ski slopes.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Kellie Crantz</h2>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/angie.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Angie Bickley is a 25 year Dell veteran.  She’s held a number of different roles over the
+                                                years including Director of Quality, Global Operations and Program Management teams.  She
+                                                also managed the Intel strategic relationship for both the notebook and server business
+                                                while working in WWP.   Angie is currently the Senior Director of Global Program Management
+                                                within ISG leading the Converged and Hyper-Converged Infrastructure program management teams.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Angie Bickley</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/ChristieMiller.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Business Architecture Office, Strategy & Planning
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Christie Miller</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Judy Nelson.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Executive Strategy & Planning
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Judy Nelson</h2>
+                                </div>
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Kara Miller.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Digital Enterprise Services (DES) Executive Strategist
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Kara Miller</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Kavitha-Headshot Nov 2017.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Director, IT Quality Engineering & Operations
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Kavitha Imani</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Louise Worley.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Director – Dell Digital Business Operations & Chief of Staff to the CIO
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Louise Worley</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Michael Scully.png?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Senior Advisor Program Management - IT, Communication strategy and planning
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Michael Scully</h2>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Lawton_Steve-biz casual headshot.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                IT Transformation Leader
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Steve lawton</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Tom Poloskey.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Consultant, Project/Program Management
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Tom Poloskey</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Ujj-102.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                IT Director, Cloud Engineering
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Ujjwal Rajbhandari</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Bill McAlpine.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Bill McAlpine has over 25 years of business experience
+                                                working in leadership roles with Fortune 100 companies
+                                                including SuperValu, Kraft Foods and Dell Inc. As a
+                                                performance coach, Bill draws from his diverse background
+                                                and wealth of business experience in operations, sales, and
+                                                HR leading both functional and global teams.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Bill McAlpine</h2>
+                                </div>
+                            </td>
+                         
 
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/ChristieMiller.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Business Architecture Office, Strategy & Planning
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Christie Miller</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Judy Nelson.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Executive Strategy & Planning
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Judy Nelson</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Kara Miller.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Digital Enterprise Services (DES) Executive Strategist
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Kara Miller</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Kavitha-Headshot Nov 2017.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Director, IT Quality Engineering & Operations
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Kavitha Imani</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Louise Worley.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Director – Dell Digital Business Operations & Chief of Staff to the CIO
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Louise Worley</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Michael Scully.png" />
-                                    <figcaption>
-                                        <p>
-                                            Senior Advisor Program Management - IT, Communication strategy and planning
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Michael Scully</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Tom Poloskey.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Consultant, Project/Program Management
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Tom Poloskey</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Ujj-102.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            IT Director, Cloud Engineering
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Ujjwal Rajbhandari</h2>
-                            </div>
-                        </div>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Catherine Kerr.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                As a Sales Entrepreneur, She has over 18 years of experience selling a multitude of products/services and has successfully operated several business ventures. As a professional Stage Actor, she has performed and toured with renowned Theatre Companies such as The Vancouver Playhouse and The Globe Theatre Company.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Catherine Kerr</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/James Higginbotham Headshot.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                James Higginbotham is an Executive API Consultant with experience in API strategy, software architecture, and training teams
+                                                in API and microservice design.
+                                                James guides enterprises through their digital transformation journey,
+                                                ensuring alignment between business and technology through product-based thinking.
+                                                James has published several titles, including his latest book, A Practical Approach to API Design.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>James Higginbotham</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Jim Cody Photo.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Jim Cody has over twenty years of management consulting experience including more than fifteen years as an instructor and facilitator.  His focus is on driving productivity by empowering participants to utilize data in an efficient manner in order to lead an organization forward.  Jim's teaching style, whether teaching onsite or virtually, is "hands-on".
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Jim Cody</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Mel Parker.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Mel Parker is an internationally recognized multi industry inspirational leader known
+                                                for his ability to turnaround, transform and upgrade businesses while generating
+                                                optimum value for shareholders, customers and employees.
 
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Bill McAlpine.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Bill McAlpine has over 25 years of business experience
-                                            working in leadership roles with Fortune 100 companies
-                                            including SuperValu, Kraft Foods and Dell Inc. As a
-                                            performance coach, Bill draws from his diverse background
-                                            and wealth of business experience in operations, sales, and
-                                            HR leading both functional and global teams.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Bill McAlpine</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Catherine Kerr.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            As a Sales Entrepreneur, She has over 18 years of experience selling a multitude of products/services and has successfully operated several business ventures. As a professional Stage Actor, she has performed and toured with renowned Theatre Companies such as The Vancouver Playhouse and The Globe Theatre Company.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Catherine Kerr</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Dan Jensen photo.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Dan Jensen has been an IT consultant to corporate organizations for over 29 years, and he has been in the Information Technology business for over 38 years. Dan has an extensive background in information technology and leadership training programs, and he brings a wealth of experiences to his clients, both domestically and internationally.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Dan Jensen</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/David Jacobson.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            David Jacobson has over 18 years’ experience in the design
-                                            and delivery of leadership programs for new managers to
-                                            senior executives. David is the founder of Goal Success, Inc.
-                                            Goal Success designs and delivers innovative leadership
-                                            development, team building, and executive coaching
-                                            programs to Fortune 500 companies.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>David Jacobson</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/James Higginbotham Headshot.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            James Higginbotham is an Executive API Consultant with experience in API strategy, software architecture, and training teams
-                                            in API and microservice design.
-                                            James guides enterprises through their digital transformation journey,
-                                            ensuring alignment between business and technology through product-based thinking.
-                                            James has published several titles, including his latest book, A Practical Approach to API Design.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>James Higginbotham</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Jim Cody Photo.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Jim Cody has over twenty years of management consulting experience including more than fifteen years as an instructor and facilitator.  His focus is on driving productivity by empowering participants to utilize data in an efficient manner in order to lead an organization forward.  Jim's teaching style, whether teaching onsite or virtually, is "hands-on".
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Jim Cody</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Mel Parker.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Mel Parker is an internationally recognized multi industry inspirational leader known
-                                            for his ability to turnaround, transform and upgrade businesses while generating
-                                            optimum value for shareholders, customers and employees.
-
-                                            He is currently President and Chief Executive Officer of Take The Limits Off, LLC,
-                                            a leadership development, executive coaching and consulting firm based out of
-                                            Austin, TX. As an international speaker and best-selling author, Mel has shared his
-                                            leadership and success strategies with audiences from around the world.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Mel Parker</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Ray Sheen photo.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Raymond Sheen, PMP® LSS BB, is a veteran business leader with over 30 years of executive, engineering management, and project management experience working in GE, the US Air Force and as an independent consultant.  Ray is author of the book, Guide to Building Your Business Case, published by Harvard Business Review Press and a contributor to the book, Guide to Project Management, also published by Harvard Business Review Press.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Ray Sheen</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Steve Gartrell.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Steve Gartrell is in high demand around the globe as a facilitator of leadership,
-                                            finance, and related skills training sessions. Steve has a 13-year track record of
-                                            international facilitation success with leaders in more than 200 corporations,
-                                            spanning 20 countries on five continents and across the US and Canada.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Steve Gartrell</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/Suzie DeBusk headshot.jpg" />
-                                    <figcaption>
-                                        <p>
-                                            Suzie DeBusk  is an entrepreneur, technologist, speaker, African adventurer.  Whether it comes to discussing business software solutions with clients, coaching people on their interpersonal and communication skills, or dealing with a charging elephant, Suzie DeBusk has a story to share.  Having founded and run her own technology firm since 1988, Suzie has remarkable insight into what it takes to build and maintain a business
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Suzie DeBusk</h2>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/speakers/austin/valerie Griffin.JPG" />
-                                    <figcaption>
-                                        <p>
-                                            Valerie is a global thought leader, strategic implementer, facilitator, and
-                                            creative change agent in the Leadership and Talent Development space.
-                                            Backed by 10+ years’ experience in business development, career
-                                            management, and recruiting, her strong organizational skills enable her to
-                                            help clients with establishing priorities, planning, structuring project
-                                            deliverables, and problem solving.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Valerie Griffin</h2>
-                            </div>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-1.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Tom Hoffman</h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-2.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Zoe Kramer</h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-3.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Helena <span>Kuhn</span></h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-4.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Alex <span>Ellan</span></h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                    </div>
-                    <!-- .row -->
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-5.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Alexander <span>Keisgner</span></h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-6.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Lara Hahn</h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-7.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Adolph</h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 col-md-3">
-                            <div class="grid">
-                                <figure class="effect-bubba">
-                                    <img src="~/img/img-team-8.jpg" alt="img02" />
-                                    <figcaption>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Sed nunc, quod agimus; Quamquam id quidem, infinitum est in hac urbe;
-                                            Id enim volumus, id contendimus, ut officii fructus sit ipsum officium.
-                                        </p>
-                                        <a href="#">View more</a>
-                                    </figcaption>
-                                </figure>
-                                <h2>Elias <span>Friedricks</span></h2>
-                            </div>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                    </div>
+                                                He is currently President and Chief Executive Officer of Take The Limits Off, LLC,
+                                                a leadership development, executive coaching and consulting firm based out of
+                                                Austin, TX. As an international speaker and best-selling author, Mel has shared his
+                                                leadership and success strategies with audiences from around the world.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Mel Parker</h2>
+                                </div>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Ray Sheen photo.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Raymond Sheen, PMP® LSS BB, is a veteran business leader with over 30 years of executive, engineering management, and project management experience working in GE, the US Air Force and as an independent consultant.  Ray is author of the book, Guide to Building Your Business Case, published by Harvard Business Review Press and a contributor to the book, Guide to Project Management, also published by Harvard Business Review Press.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Ray Sheen</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Dan Jensen photo.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Dan Jensen has been an IT consultant to corporate organizations for over 29 years, and he has been in the Information Technology business for over 38 years. Dan has an extensive background in information technology and leadership training programs, and he brings a wealth of experiences to his clients, both domestically and internationally.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Dan Jensen</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/David Jacobson.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                David Jacobson has over 18 years’ experience in the design
+                                                and delivery of leadership programs for new managers to
+                                                senior executives. David is the founder of Goal Success, Inc.
+                                                Goal Success designs and delivers innovative leadership
+                                                development, team building, and executive coaching
+                                                programs to Fortune 500 companies.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>David Jacobson</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Sara-Canaday-headshot3-199x300.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Sara Canaday is a recognized expert and author in leadership and strategic personal branding.
+                                                Specifically, she is known for her ability to help high potentials identify the elusive blind
+                                                spots that are preventing them from taking their careers (and their companies) to the next
+                                                level.Sara’s professional career spans 20 years and includes sales, leadership, and executive
+                                                roles at USAA and Texas Mutual. She served as principal consultant for Empowerment Enterprises
+                                                before beginning her own consultancy in 2009.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Sara Canaday</h2>
+                                </div>
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Steve Gartrell.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Steve Gartrell is in high demand around the globe as a facilitator of leadership,
+                                                finance, and related skills training sessions. Steve has a 13-year track record of
+                                                international facilitation success with leaders in more than 200 corporations,
+                                                spanning 20 countries on five continents and across the US and Canada.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Steve Gartrell</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/Suzie DeBusk headshot.jpg?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Suzie DeBusk  is an entrepreneur, technologist, speaker, African adventurer.  Whether it comes to discussing business software solutions with clients, coaching people on their interpersonal and communication skills, or dealing with a charging elephant, Suzie DeBusk has a story to share.  Having founded and run her own technology firm since 1988, Suzie has remarkable insight into what it takes to build and maintain a business
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Suzie DeBusk</h2>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="grid">
+                                    <figure class="effect-bubba">
+                                        <img src="~/img/speakers/austin/valerie Griffin.JPG?@ViewBag.ChangeSet" />
+                                        <figcaption>
+                                            <p>
+                                                Valerie is a global thought leader, strategic implementer, facilitator, and
+                                                creative change agent in the Leadership and Talent Development space.
+                                                Backed by 10+ years’ experience in business development, career
+                                                management, and recruiting, her strong organizational skills enable her to
+                                                help clients with establishing priorities, planning, structuring project
+                                                deliverables, and problem solving.
+                                            </p>
+                                            <a href="#">View more</a>
+                                        </figcaption>
+                                    </figure>
+                                    <h2>Valerie Griffin</h2>
+                                </div>
+                            </td>
+                        
+                        </tr>
+                    </table>
+                   
                 }
             }
             <!-- .row -->
