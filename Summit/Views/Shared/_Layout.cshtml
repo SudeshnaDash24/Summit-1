@@ -14,7 +14,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/font-awesome.min.css" rel="stylesheet">
     <!-- Style CSS -->
-    <link href="~/Content/style.css" rel="stylesheet">
+    @*<link href="~/Content/style.css" rel="stylesheet">*@
+    @Url.CSS("~/Content/style.css")
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,7 +38,9 @@
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7654sODPP4HXsAcjdjJ2futVd-wW9ZHA"></script>
     <!--<script src="~/Scripts/one-page-nav.js"></script>-->
-    <script src="~/Scripts/scripts.js"></script>
-    <script src="~/Scripts/base.js"></script>
+    @Url.Script("~/Scripts/scripts.js")
+    @Url.Script("~/Scripts/base.js")
+    @*<script src="~/Scripts/scripts.js"></script>
+    <script src="~/Scripts/base.js"></script>*@
 </body>
 </html>

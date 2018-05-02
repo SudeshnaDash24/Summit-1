@@ -987,7 +987,7 @@ figure.effect-bubba:hover {
         margin: 0px 6%;
         min-width: 270px;
         width: 48%;
-        
+
         text-align: center;
         cursor: pointer;
     }
@@ -1121,4 +1121,11 @@ input.star-1:checked ~ label.star:before {
     top: 238px;
     text-align: left;
     left: 50px;
+}
+.speaker_grid img{
+    width:300px;
+    height:300px;
+}
+.speaker_grid h2{
+    font-size:25px !important;
 }

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function ($) {
-    var dir;
+    var dir,dir1,dir2,dir3;
     var url = window.location.pathname;
     url = url.split('/');
     var mainurl = window.location.host;
@@ -24,7 +24,7 @@
             dir2 = "/img/grads/austin/itdp/group2";
             dir3 = "/img/grads/austin/itdp/group3";
         }
-        else if (program.toLowerCase() === "itlp (fy16-fy18)" || program.toLowerCase() === "leader (+ itlp fy19)") {
+        else if (program.toLowerCase() === "itlp (fy16-fy18)" || program.toLowerCase() === "leader and itlp fy19") {
             dir1 = "/img/grads/austin/itlp/group1";
             dir2 = "/img/grads/austin/itlp/group2";
             dir3 = "/img/grads/austin/itlp/group3";
@@ -57,7 +57,7 @@
         success: function (data) {
             $(data).find("a").attr("href", function (i, val) {
                 if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    $(".group1slides").append("<div><img data-u='image' src='" + val + "'></div>");
+                    $(".group1slides").append("<div><img data-u='image' src='" + val + "?123'></div>");
                 }
             });
             if ($('#section-graduationprofiles').length > 0) {
@@ -80,7 +80,7 @@
             }
             $(window).bind("load", ScaleSlider);
             $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
+      //      $(window).bind("orientationchange", ScaleSlider);
         }
     });
     $.ajax({
@@ -88,7 +88,7 @@
         success: function (data) {
             $(data).find("a").attr("href", function (i, val) {
                 if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    $(".group2slides").append("<div><img data-u='image' src='" + val + "'></div>");
+                    $(".group2slides").append("<div><img data-u='image' src='" + val + "?123'></div>");
                 }
             });
             if ($('#section-graduationprofiles').length > 0) {
@@ -109,7 +109,7 @@
             }
             $(window).bind("load", ScaleSlider);
             $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
+        //    $(window).bind("orientationchange", ScaleSlider);
         }
     });
     $.ajax({
@@ -117,7 +117,7 @@
         success: function (data) {
             $(data).find("a").attr("href", function (i, val) {
                 if (val.match(/\.(jpe?g|png|gif)$/)) {
-                    $(".group3slides").append("<div><img data-u='image' src='" + val + "'></div>");
+                    $(".group3slides").append("<div><img data-u='image' src='" + val + "?123'></div>");
                 }
             });
             if ($('#section-graduationprofiles').length > 0) {
@@ -137,7 +137,7 @@
             }
             $(window).bind("load", ScaleSlider);
             $(window).bind("resize", ScaleSlider);
-            $(window).bind("orientationchange", ScaleSlider);
+         //   $(window).bind("orientationchange", ScaleSlider);
         }
     });
     
