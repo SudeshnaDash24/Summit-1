@@ -74,14 +74,19 @@ namespace Summit.Controllers
             if(Region == "US")
                 ViewBag.Programs = new string[] { "ITDP", "ITLP (FY16-FY18)", "LEADER and ITLP FY19" };
             else
-                ViewBag.Programs = new string[] { "ITDP", "ITLP"};
+                ViewBag.Programs = new string[] { "ITDP", "ITLP","MANAGER"};
             if (Region == "India")
             {
                 ViewBag.Date = "June 20-22, 2018";
-                if (Program == "ITLP" || Program == "LEADER ( ITLP FY19)")
+                if (Program == "ITLP (FY16-FY18)")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
+                }
+                else if(Program == "LEADER ( ITLP FY19)")
+                {
+                    ViewBag.Program = "MANAGER";
+                    Program = "MANAGER";
                 }
                 else
                 {
@@ -159,6 +164,7 @@ namespace Summit.Controllers
             {
                 case "us":
                     //First day
+                    #region US DAY-1
                     switch (Program.ToLower())
                     {
                         case "itlp (fy16-fy18)":
@@ -202,6 +208,9 @@ namespace Summit.Controllers
                             Agenda.Add(day_one);
                             break;
                     }
+                    #endregion
+
+                    #region US DAY-2
                     //Preparing day two with respect to programs
                     EventDay day_two = new EventDay();
                     day_two = new EventDay();
@@ -243,7 +252,9 @@ namespace Summit.Controllers
                     group.Sessions.Add(new EventSession("06:30 PM - 08:30PM", "Welcome Reception Dinner", "Punchbowl Social"));
                     day_two.Groups.Add(group);
                     Agenda.Add(day_two);
+                    #endregion
 
+                    #region US DAY-3
                     //Preparing day three with a mix of common + program specific sessions
                     EventDay day_three = new EventDay();
                     day_three.Groups = new List<Groups>();
@@ -327,7 +338,9 @@ namespace Summit.Controllers
                     group.Sessions.Add(new EventSession("06:00 PM - 07:00PM", "Yoga (onsite)","optional"));
                     day_three.Groups.Add(group);
                     Agenda.Add(day_three);
+                    #endregion
 
+                    #region US DAY-4
                     EventDay day_four = new EventDay();
                     day_four.Groups = new List<Groups>();
                     group = new Groups();
@@ -411,58 +424,139 @@ namespace Summit.Controllers
                     group.Sessions.Add(new EventSession("05:15 PM - 07:00PM", "Graduate Recognition \r\n Wrap Up/Raffle/Team Awards \r\n Group Picture/Cocktail Reception Dinner","Main Ballroom"));
                     day_four.Groups.Add(group);
                     Agenda.Add(day_four);
-
                     break;
+                #endregion
                 case "india":
                     //First day
+                    #region INDIA-DAY1
                     day_one = new EventDay();
+                    day_one.date = "June 20";
+                    //day_one.attire = "smart biz casual / exec presence";
+                    day_one.location = "Grand Ballroom";
                     day_one.Groups = new List<Groups>();
                     group = new Groups();
                     group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Breakfast & Registration india"));
-                    group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Induction india"));
+                    group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Registration & Breakfast"));
+                    group.Sessions.Add(new EventSession("09:00 AM - 09:30AM", "Welcome","Jen E, Kelli C, Hemal, Sujai"));
+                    group.Sessions.Add(new EventSession("09:30 AM - 11:00AM", "Keynote by Ashish Vidyarthi followed by Q&A  Krishna Reddy","Topics – Thriving during change or Being the best version of yourself"));
+                    group.Sessions.Add(new EventSession("11:00 AM - 11:30AM", "Theme Activity/Break"));
+                    day_one.Groups.Add(group);
+
+                    group = new Groups();
+                    group.Sessions = new List<EventSession>();
+                    group.Sessions.Add(new EventSession("12:00 PM - 01:00PM", "Dell World/FRS Update", "Jim/ Scott/ Hemal/ Thiru"));
+                    group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
+                    group.Sessions.Add(new EventSession("02:00PM - 03:00PM", "Fire Side chat with Anu Vaidhyanathan", "Sheenam, Sudhir, Kellie"));
+                    day_one.Groups.Add(group);
+
+                    group = new Groups();
+                    group.Sessions = new List<EventSession>();
+                    group.Sessions.Add(new EventSession("03:00 PM - 04:30PM", "Patent Showcase - INNOVATION"));
+                    group.Sessions.Add(new EventSession("04:30 PM - 05:00PM", "Puppet Show – Raffle //WINNING TOGETHER"));
                     day_one.Groups.Add(group);
                     Agenda.Add(day_one);
+                    #endregion
 
-                    //Preparing day two with respect to programs
+                    #region INDIA-DAY2
                     day_two = new EventDay();
-                    day_two.Groups = new List<Groups>();
+                    day_two.date = "June 21";
                     group = new Groups();
-                    group.Sessions = new List<EventSession>();
-                    switch (Program.ToLower())
-                    {
-                        case "itdp":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Breakfast & Registration for india ITDPs"));
-                            break;
-                        case "itlp":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Breakfast & Registration for ITLPs"));
-                            break;
-                        case "leaders":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Breakfast & Registration for Leaders"));
-                            break;
-                    }
+                    group.Sessions.Add(new EventSession("08:00 AM - 09:30PM", "Breakfast"));
                     day_two.Groups.Add(group);
-                    Agenda.Add(day_two);
-                    //Preparing day three with a mix of common + program specific sessions
-                    day_three = new EventDay();
-                    day_three.Groups = new List<Groups>();
-                    group = new Groups();
-                    group.Sessions = new List<EventSession>();
-                    group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Breakfast & Registration for third day - Common"));
                     switch (Program.ToLower())
                     {
                         case "itdp":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Specific for ITDPs"));
+                            day_two.location = "GB,RB";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Digital IT Future State Simulation", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
+                            day_two.Groups.Add(group);
+                            
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 05:00PM", "Digital IT Future State Simulation", ""));
+                            day_two.Groups.Add(group);
+                            break;
+                        case "manager":
+                            day_two.location = "Turret";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "What got you here won’t get you there – Dale Carnegie", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
+                            day_two.Groups.Add(group);
+
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 05:00PM", "What got you here won’t get you there – Dale Carnegie", ""));
+                            day_two.Groups.Add(group);
                             break;
                         case "itlp":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Specific for ITLPs"));
-                            break;
-                        case "leaders":
-                            group.Sessions.Add(new EventSession("08:00 AM - 09:00AM", "Specific for Leaders"));
+                            day_two.location = "Jamavar";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Creative Thinking by Linda Waiman", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Mentor Circle","Scott, Kavita"));
+                            day_two.Groups.Add(group);
+
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 05:00PM", "Creative Thinking by Linda Waiman", ""));
+                            day_two.Groups.Add(group);
                             break;
                     }
+                    Agenda.Add(day_two);
+                    #endregion
+
+                    #region INDIA-DAY3
+                    day_three = new EventDay();
+                    day_three.date = "June 22";
+                    group = new Groups();
+                    group.Sessions.Add(new EventSession("08:00 AM - 09:30PM", "Breakfast"));
                     day_three.Groups.Add(group);
+                    switch (Program.ToLower())
+                    {
+                        case "itdp":
+                            day_three.location = "GB,RB";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Digital IT Future State Simulation", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
+                            day_two.Groups.Add(group);
+
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 04:00PM", "Digital IT Future State Simulation", ""));
+                            group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "ITDP and ITLP Graduation & Patent finale and closure", ""));
+                            day_three.Groups.Add(group);
+                            break;
+                        case "manager":
+                            day_three.location = "Turret";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "What got you here won’t get you there – Dale Carnegie", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Mentor Circle"));
+                            day_three.Groups.Add(group);
+
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 03:00PM", "Public Speaking Mastery– Dale Carnegie", "Sanjay"));
+                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype JudgeIndu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
+                            group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "ITDP and ITLP Graduation & Patent finale and closure", ""));
+                            day_three.Groups.Add(group);
+                            break;
+                        case "itlp":
+                            day_three.location = "Jamavar";
+                            group = new Groups();
+                            group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Creative Thinking by Linda Waiman", ""));
+                            group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Networking Lunch"));
+                            day_two.Groups.Add(group);
+
+                            group = new Groups();
+                            group.Sessions = new List<EventSession>();
+                            group.Sessions.Add(new EventSession("02:00 PM - 03:00PM", "Public Speaking Mastery– Dale Carnegie", "Sanjay"));
+                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype JudgeIndu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
+                            group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "ITDP and ITLP Graduation & Patent finale and closure", ""));
+                            day_three.Groups.Add(group);
+                            break;
+                    }
                     Agenda.Add(day_three);
+                    #endregion
                     break;
                 case "malaysia":
                     //First day
