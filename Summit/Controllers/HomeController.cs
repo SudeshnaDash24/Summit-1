@@ -78,12 +78,12 @@ namespace Summit.Controllers
             if (Region == "India")
             {
                 ViewBag.Date = "June 20-22, 2018";
-                if (Program == "ITLP (FY16-FY18)")
+                if (Program == "ITLP (FY16-FY18)" || Program == "ITLP")
                 {
                     ViewBag.Program = "ITLP";
                     Program = "ITLP";
                 }
-                else if(Program == "LEADER ( ITLP FY19)")
+                else if(Program == "LEADER ( ITLP FY19)" || Program == "MANAGER")
                 {
                     ViewBag.Program = "MANAGER";
                     Program = "MANAGER";
@@ -460,7 +460,9 @@ namespace Summit.Controllers
                     #region INDIA-DAY2
                     day_two = new EventDay();
                     day_two.date = "June 21";
+                    day_two.Groups = new List<Groups>();
                     group = new Groups();
+                    group.Sessions = new List<EventSession>();
                     group.Sessions.Add(new EventSession("08:00 AM - 09:30PM", "Breakfast"));
                     day_two.Groups.Add(group);
                     switch (Program.ToLower())
@@ -468,6 +470,7 @@ namespace Summit.Controllers
                         case "itdp":
                             day_two.location = "GB,RB";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Digital IT Future State Simulation", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
                             day_two.Groups.Add(group);
@@ -480,6 +483,7 @@ namespace Summit.Controllers
                         case "manager":
                             day_two.location = "Turret";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "What got you here won’t get you there – Dale Carnegie", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
                             day_two.Groups.Add(group);
@@ -492,6 +496,7 @@ namespace Summit.Controllers
                         case "itlp":
                             day_two.location = "Jamavar";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Creative Thinking by Linda Waiman", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Mentor Circle","Scott, Kavita"));
                             day_two.Groups.Add(group);
@@ -508,7 +513,9 @@ namespace Summit.Controllers
                     #region INDIA-DAY3
                     day_three = new EventDay();
                     day_three.date = "June 22";
+                    day_three.Groups = new List<Groups>();
                     group = new Groups();
+                    group.Sessions = new List<EventSession>();
                     group.Sessions.Add(new EventSession("08:00 AM - 09:30PM", "Breakfast"));
                     day_three.Groups.Add(group);
                     switch (Program.ToLower())
@@ -516,9 +523,10 @@ namespace Summit.Controllers
                         case "itdp":
                             day_three.location = "GB,RB";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Digital IT Future State Simulation", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Lunch"));
-                            day_two.Groups.Add(group);
+                            day_three.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
@@ -529,6 +537,7 @@ namespace Summit.Controllers
                         case "manager":
                             day_three.location = "Turret";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "What got you here won’t get you there – Dale Carnegie", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Mentor Circle"));
                             day_three.Groups.Add(group);
@@ -536,21 +545,22 @@ namespace Summit.Controllers
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("02:00 PM - 03:00PM", "Public Speaking Mastery– Dale Carnegie", "Sanjay"));
-                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype JudgeIndu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
+                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype Judge- Indu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
                             group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "ITDP and ITLP Graduation & Patent finale and closure", ""));
                             day_three.Groups.Add(group);
                             break;
                         case "itlp":
                             day_three.location = "Jamavar";
                             group = new Groups();
+                            group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("09:30 AM - 01:00PM", "Creative Thinking by Linda Waiman", ""));
                             group.Sessions.Add(new EventSession("01:00 PM - 02:00PM", "Networking Lunch"));
-                            day_two.Groups.Add(group);
+                            day_three.Groups.Add(group);
 
                             group = new Groups();
                             group.Sessions = new List<EventSession>();
                             group.Sessions.Add(new EventSession("02:00 PM - 03:00PM", "Public Speaking Mastery– Dale Carnegie", "Sanjay"));
-                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype JudgeIndu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
+                            group.Sessions.Add(new EventSession("03:00 PM - 04:00PM", "ITDP Prototype Judge- Indu, Murali, Pradeep, Raja, Sita, Akta, Sai", ""));
                             group.Sessions.Add(new EventSession("04:00 PM - 05:00PM", "ITDP and ITLP Graduation & Patent finale and closure", ""));
                             day_three.Groups.Add(group);
                             break;

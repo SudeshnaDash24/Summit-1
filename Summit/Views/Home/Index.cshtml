@@ -214,7 +214,10 @@ var program = '@ViewBag.Program'
                             <div class="col-md-4">
                                 <h3>Day @i - @day.date</h3>
                                 <span style="font-size:17px;position:relative;top:-17px">@day.location</span>
-                                <br /><span style="font-size:17px;position:relative;top:-17px">Attire: @day.attire</span>
+                                @if (ViewBag.Region == "US")
+                                {
+                                    <br /><span style="font-size:17px;position:relative;top:-17px">Attire: @day.attire</span>
+                                }
                                 @foreach (Summit.Controllers.HomeController.Groups group in day.Groups)
                                 {
                                     <div class="session">
