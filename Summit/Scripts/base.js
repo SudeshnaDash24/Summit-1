@@ -30,10 +30,10 @@
             dir2 = "/img/grads/india/itdp/group2";
             dir3 = "/img/grads/india/itdp/group3";
         }
-        else if (program.toLowerCase() === "itlp") {
-            dir1 = "/img/grads/india/itlp/group1";
-            dir2 = "/img/grads/india/itlp/group2";
-            dir3 = "/img/grads/india/itlp/group3";
+        else if (program.toLowerCase() === "itlp" || program.toLowerCase() === "manager") {
+            dir1 = "/img/grads/india/itlp_india/group1";
+            dir2 = "/img/grads/india/itlp_india/group2";
+            //dir3 = "/img/grads/india/itlp/group3";
         }
     }
     else if (region === "US") {
@@ -54,7 +54,7 @@
             dir2 = "/img/grads/malaysia/itdp/group2";
             //dir3 = "/img/grads/malaysia/itdp/group3";
         }
-        else if (program.toLowerCase() === "itlp") {
+        else if (program.toLowerCase() === "itlp" || program.toLowerCase() === "manager") {
             dir1 = "/img/grads/malaysia/itlp/group1";
             dir2 = "/img/grads/malaysia/itlp/group2";
             dir3 = "/img/grads/malaysia/itlp/group3";
