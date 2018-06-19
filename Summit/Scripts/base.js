@@ -1,4 +1,7 @@
 ﻿$(document).ready(function ($) {
+    var url = window.location.href;
+    if (url == "http://annualsummit.azurewebsites.net/Home/Index?Region=India&Program=ITDP")
+        window.location.href = "http://annualsummit.azurewebsites.net//Home/Index?Region=India&Program=ITDP";
     var dir, dir1, dir2, dir3;
     $("#contactForm").validate({
         rules: {

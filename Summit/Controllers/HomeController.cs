@@ -562,8 +562,10 @@ namespace Summit.Controllers
                             day_two.Groups.Add(group);
                             break;
                     }
+                    group = new Groups();
+                    group.Sessions = new List<EventSession>();
                     group.Sessions.Add(new EventSession("05:00 PM - 07:00PM", "BREAK", ""));
-                    group.Sessions.Add(new EventSession("02:00 PM - 05:00PM", "AFTER7", "Broadway Theme Dinner at Vapor, Indiranagar"));
+                    group.Sessions.Add(new EventSession("07:00 PM", "AFTER7", "Broadway Theme Dinner at Boho, Koramangala"));
                     day_two.Groups.Add(group);
                     Agenda.Add(day_two);
                     #endregion
